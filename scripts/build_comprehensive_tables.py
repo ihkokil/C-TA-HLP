@@ -66,6 +66,7 @@ def build_headroom_table():
         r"\centering",
         r"\caption{Capacity Headroom Sensitivity on Abilene ($B=4$): Impact of Headroom Factor $\alpha$ on Traffic Availability, Congestion Drops, and Maximum Link Utilization.}",
         r"\label{tab:headroom_sensitivity}",
+        r"\begin{adjustbox}{max width=\columnwidth}",
         r"\begin{tabular}{@{}clrrrr@{}}",
         r"\toprule",
         r"\textbf{Headroom $\alpha$} & \textbf{Scheme} & \textbf{$T_A$ (\%)} & \textbf{Drops} & \textbf{MLU} \\ \midrule",
@@ -90,6 +91,7 @@ def build_headroom_table():
     lines += [
         r"\bottomrule",
         r"\end{tabular}",
+        r"\end{adjustbox}",
         r"\end{table}",
         "",
     ]
@@ -105,11 +107,17 @@ def build_traffic_uncertainty_table():
         return
     df = pd.read_csv(csv_path)
 
+    # Get n_replicates from the data
+    n_reps = int(df["n_replicates"].iloc[0]) if not df.empty else 19
+
     lines = [
         r"\begin{table}[t]",
         r"\centering",
-        r"\caption{Traffic Uncertainty Evaluation: Paired Statistical Comparison over $n=20$ Independent Perturbed Traffic Matrices (Noise $\sigma=20\%$).}",
+        rf"\caption{{Traffic Uncertainty Evaluation: Paired Statistical Comparison over $n={n_reps}$ Independent Perturbed Traffic Matrices (Noise $\sigma=20\%$).}}",
         r"\label{tab:traffic_uncertainty}",
+        r"\footnotesize",
+        r"\setlength{\tabcolsep}{4pt}",
+        r"\begin{adjustbox}{max width=\columnwidth}",
         r"\begin{tabular}{@{}llrrrrrc@{}}",
         r"\toprule",
         r"\textbf{Topology} & \textbf{B} & \textbf{HLP} & \textbf{C-TA-HLP} & \textbf{$\Delta$} & \textbf{$t$-stat} & \textbf{$p$-value} & \textbf{Cohen's $d$} \\ \midrule",
@@ -134,6 +142,7 @@ def build_traffic_uncertainty_table():
     lines += [
         r"\bottomrule",
         r"\end{tabular}",
+        r"\end{adjustbox}",
         r"\end{table}",
         "",
     ]
