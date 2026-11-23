@@ -1,0 +1,11 @@
+{
+  "python_version": "3.12.16",
+  "platform": "Linux-7.0.0-1020-azure-x86_64-with-glibc2.43",
+  "processor": "",
+  "numpy_version": "2.5.5",
+  "pandas_version": "3.1.1",
+  "scipy_version": "1.18.1",
+  "networkx_version": "3.7",
+  "timestamp": "2026-11-23 14:33:56",
+  "command_line": "experiments/run_statistical_experiments.py --topo-type sndlib --replicates 5 --trials 300 --seed 42"
+}
